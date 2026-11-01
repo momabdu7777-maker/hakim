@@ -29,8 +29,24 @@ body{
   background:radial-gradient(ellipse 90% 50% at 50% -10%,rgba(217,164,65,.18),transparent 70%),var(--ink);
 }
 main{max-width:560px;margin:0 auto;padding:48px 16px 40px;text-align:center}
-.icon{width:128px;height:128px;border-radius:28px;box-shadow:0 10px 40px rgba(217,164,65,.25);border:1px solid var(--line)}
-h1{font-family:var(--ruqaa);font-size:64px;line-height:1.2;color:var(--gold-2);margin-top:18px}
+.lantern{width:118px;height:auto;display:block;margin:0 auto -6px;filter:drop-shadow(0 0 22px rgba(243,200,106,.45));overflow:visible}
+.lantern .flame{transform-box:fill-box;transform-origin:50% 100%;animation:flicker 2.6s ease-in-out infinite}
+.lantern .l-halo{animation:halo 3.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes flicker{0%,100%{transform:scale(1,1)}25%{transform:scale(.94,1.06) skewX(1.5deg)}50%{transform:scale(1.04,.96)}75%{transform:scale(.97,1.04) skewX(-1.5deg)}}
+@keyframes halo{0%,100%{opacity:.85;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+.brand{
+  display:inline-block;padding:0 .2em .28em;margin-bottom:-.1em;
+  font-family:var(--ruqaa);font-weight:700;font-size:clamp(72px,17vw,112px);line-height:1.2;
+  background-image:
+    linear-gradient(100deg, transparent 42%, rgba(255,250,232,.9) 50%, transparent 58%),
+    linear-gradient(180deg,#fbe2a0 0%, var(--gold-2) 40%, var(--gold) 75%, var(--gold-deep) 100%);
+  background-size:260% 100%, 100% 100%;background-repeat:no-repeat;background-position:160% 0, 0 0;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 40px rgba(243,200,106,.18);
+  animation:shine 6s ease-in-out 1.5s infinite;
+}
+@keyframes shine{0%{background-position:160% 0,0 0}30%,100%{background-position:-60% 0,0 0}}
+@media (prefers-reduced-motion:reduce){.lantern .flame,.lantern .l-halo,.brand{animation:none!important}}
 .tag{color:var(--muted);font-size:17px;margin-top:4px}
 .stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:24px 0 28px}
 .stats span{border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:14px;color:var(--parch);background:rgba(20,34,58,.6)}
@@ -50,8 +66,40 @@ footer{margin-top:32px;font-size:13px;color:var(--muted)}
 </head>
 <body>
 <main>
-  <img class="icon" src="icon.png" alt="أيقونة لعبة حكيم" width="128" height="128">
-  <h1>حكيم</h1>
+  <svg class="lantern" viewBox="0 0 140 170" aria-hidden="true">
+    <defs>
+      <radialGradient id="lgGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#f3c86a" stop-opacity=".55"/>
+        <stop offset=".45" stop-color="#d9a441" stop-opacity=".16"/>
+        <stop offset="1" stop-color="#d9a441" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="lgBrass" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#8a5c18"/>
+        <stop offset=".5" stop-color="#f3c86a"/>
+        <stop offset="1" stop-color="#8a5c18"/>
+      </linearGradient>
+      <radialGradient id="lgFlame" cx="50%" cy="72%" r="62%">
+        <stop offset="0" stop-color="#fff7dc"/>
+        <stop offset=".45" stop-color="#f3c86a"/>
+        <stop offset="1" stop-color="#d9772f"/>
+      </radialGradient>
+      <linearGradient id="lgGlass" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#f3c86a" stop-opacity=".14"/>
+        <stop offset="1" stop-color="#d9a441" stop-opacity=".34"/>
+      </linearGradient>
+    </defs>
+    <circle class="l-halo" cx="70" cy="94" r="70" fill="url(#lgGlow)"/>
+    <circle cx="70" cy="13" r="8" fill="none" stroke="url(#lgBrass)" stroke-width="3"/>
+    <path d="M70 21 C57 23 47 32 43 44 H97 C93 32 83 23 70 21Z" fill="url(#lgBrass)"/>
+    <circle cx="70" cy="21" r="3" fill="#f3c86a"/>
+    <rect x="39" y="44" width="62" height="7" rx="2" fill="url(#lgBrass)"/>
+    <path d="M44 51 H96 L104 97 L94 133 H46 L36 97 Z" fill="url(#lgGlass)" stroke="url(#lgBrass)" stroke-width="2.5" stroke-linejoin="round"/>
+    <g class="flame"><path d="M70 70 C78 83 83 93 79 104 C76 111 64 111 61 104 C57 93 62 83 70 70Z" fill="url(#lgFlame)"/></g>
+    <path d="M57 51 L51 97 L58 133 M83 51 L89 97 L82 133 M36 97 H58 M82 97 H104" stroke="url(#lgBrass)" stroke-width="1.6" fill="none" opacity=".8"/>
+    <rect x="41" y="133" width="58" height="8" rx="2" fill="url(#lgBrass)"/>
+    <path d="M50 141 H90 L83 152 H57 Z" fill="url(#lgBrass)"/>
+  </svg>
+  <h1 class="brand">حكيم</h1>
   <p class="tag">لعبة أسئلة وألغاز عربية، ارتقِ فيها من مبتدئ حتى رتبة الحكيم</p>
 
   <div class="stats"><span>240 سؤالاً</span><span>6 مجالس</span><span>4 مستويات</span><span>مجانية</span></div>
