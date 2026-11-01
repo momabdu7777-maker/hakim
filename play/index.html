@@ -8,7 +8,7 @@
 <title>حكيم</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#0f1a2b;
@@ -23,7 +23,7 @@
   --muted:#b3a78f;
   --ok:#62c393;
   --bad:#e66a5c;
-  --ruqaa:'Aref Ruqaa', 'Times New Roman', serif;
+  --ruqaa:'Amiri', 'Times New Roman', serif;
   --kufi:'Reem Kufi', 'IBM Plex Sans Arabic', sans-serif;
   --plex:'IBM Plex Sans Arabic', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
   --radius:16px;
@@ -1298,7 +1298,7 @@ const FX = (() => {
         p.x += Math.sin(p.life * .03 + p.sw) * .4 * dt;
         cx.globalAlpha = (k < .1 ? k / .1 : 1) * (k > .8 ? (1 - k) / .2 : 1) * .9;
         cx.save(); cx.translate(p.x, p.y); cx.rotate(p.rot);
-        cx.font = `700 ${p.size.toFixed(0)}px 'Aref Ruqaa', serif`; cx.fillStyle = p.c; cx.textAlign = 'center';
+        cx.font = `700 ${p.size.toFixed(0)}px 'Amiri', serif`; cx.fillStyle = p.c; cx.textAlign = 'center';
         cx.fillText(p.t, 0, 0); cx.restore();
       } else if(p.k === 'mote'){
         cx.globalCompositeOperation = 'lighter'; cx.globalAlpha = Math.sin(Math.PI * k) * .8; cx.fillStyle = p.c;
